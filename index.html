@@ -762,6 +762,221 @@
     border-radius: 1px;
   }
 
+  /* ---- OPPORTUNITIES ---- */
+  .opportunities {
+    background: var(--teal-deep);
+    padding: 8rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunities::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(245,200,66,0.06);
+  }
+  .opp-inner { max-width: 1300px; margin: 0 auto; position: relative; }
+  .opp-header { margin-bottom: 3.5rem; }
+  .opp-header .section-title { color: #fff; }
+  .opp-header .about-label { color: var(--gold); }
+  .opp-header p { font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.7; margin-top: 0.8rem; max-width: 560px; }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .opp-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .opp-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+  }
+  .opp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .opp-card.type-fellowship::before { background: var(--gold); }
+  .opp-card.type-training::before { background: var(--teal-light); }
+  .opp-card.type-open::before { background: var(--orange); }
+  .opp-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .opp-card.type-fellowship .opp-type { color: var(--gold); }
+  .opp-card.type-training .opp-type { color: var(--teal-light); }
+  .opp-card.type-open .opp-type { color: var(--orange-light); }
+  .opp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .opp-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .opp-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .opp-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.3rem 0.7rem;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .opp-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--teal-light);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .opp-link:hover { gap: 0.7rem; }
+  .opp-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+    grid-column: 1 / -1;
+    border: 1px dashed rgba(255,255,255,0.1);
+  }
+  .opp-empty span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ---- BLOG ---- */
+  .blog {
+    padding: 8rem 5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    border-bottom: 2px solid rgba(11,123,110,0.12);
+    padding-bottom: 2rem;
+  }
+  .blog-header-left .about-label { color: var(--orange); }
+  .blog-all-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--teal);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .blog-all-link:hover { color: var(--orange); }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .blog-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .blog-card:hover { transform: translateY(-4px); }
+  .blog-card.featured { grid-row: span 1; }
+  .blog-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+  .blog-card.featured .blog-img-placeholder { aspect-ratio: 4/3; font-size: 3.5rem; }
+  .blog-img-placeholder.c1 { background: linear-gradient(135deg, var(--teal-deep), var(--teal-light)); }
+  .blog-img-placeholder.c2 { background: linear-gradient(135deg, #3a2a1a, var(--orange)); }
+  .blog-img-placeholder.c3 { background: linear-gradient(135deg, #1a1060, var(--pride-4)); }
+  .blog-cat {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin: 1.2rem 0 0.5rem;
+  }
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--teal-deep);
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
+  }
+  .blog-card.featured .blog-title { font-size: 1.4rem; }
+  .blog-excerpt {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .blog-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(122,110,101,0.7);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .blog-coming {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 5rem 2rem;
+    border: 1px dashed rgba(11,123,110,0.2);
+    color: var(--mid);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .blog-coming span { display: block; font-size: 2.5rem; margin-bottom: 1rem; }
+
   /* ---- FOOTER ---- */
   .footer {
     background: var(--ink);
@@ -842,8 +1057,11 @@
     .vision-mission-inner { grid-template-columns: 1fr; }
     .vm-block { padding: 0 0 3rem 0 !important; border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 3rem; }
     .vision-mission-section { padding: 5rem 2rem; }
-    .values-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .values-sub { text-align: left; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .opportunities { padding: 5rem 2rem; }
+    .blog { padding: 5rem 2rem; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
   }
 </style>
 </head>
@@ -856,6 +1074,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#focus">Our Work</a></li>
     <li><a href="#yelp">YELP</a></li>
+    <li><a href="#opportunities">Opportunities</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Connect</a></li>
   </ul>
 </nav>
@@ -870,7 +1090,7 @@
       <em>Technology.</em>
     </h1>
     <p class="hero-desc">
-      We work at the intersection of AI, digital rights, and community — bringing the communities most often left out into the conversations shaping Kenya's digital future.
+      We work at the intersection of AI, digital rights, and community. Bringing the people most often left out into the conversations shaping Kenya's digital future.
     </p>
     <div class="hero-cta">
       <a href="#focus" class="btn btn-primary">Explore Our Work</a>
@@ -931,14 +1151,14 @@
     <h2 class="section-title">A startup rooted in Kisumu.</h2>
     <p class="about-body">Tukonnect Digital Hub is a Kisumu-based startup working at the intersection of technology, inclusion, and community. We launched in 2025 out of a simple observation: digital tools, AI, and the conversations shaping them are largely happening without the people who need them most.</p>
     <p class="about-body">We exist to change that. From our base in Kisumu, we support LGBTQI+ communities, women in tech, and young emerging leaders to build digital skills, understand their rights in digital spaces, shape AI policy conversations, and develop as the next generation of Kenyan thought leaders.</p>
-    <p class="about-body">We are small, intentional, and rooted in Kisumu — and the work we do here matters.</p>
+    <p class="about-body">We are small, intentional, and rooted in Kisumu. The work we do here matters.</p>
   </div>
   <div class="about-right reveal">
     <div class="about-accent"></div>
     <div class="about-card">
       <p>
         <span class="vision-label">About</span>
-        Tukonnect Digital Hub is a Kisumu-based startup working at the intersection of technology, inclusion, and community. Small, intentional, and rooted — building from home.
+        Tukonnect Digital Hub is a Kisumu-based startup working at the intersection of technology, inclusion, and community. Small, intentional, and rooted. Building from home.
       </p>
     </div>
   </div>
@@ -951,14 +1171,14 @@
       <div class="vm-label">Vision</div>
       <div class="vm-icon">🔭</div>
       <h3 class="vm-title">Where we're going</h3>
-      <p class="vm-text">A Kisumu where communities most often left out — LGBTQI+ people, women, and young emerging leaders — are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
+      <p class="vm-text">A Kisumu where communities most often left out: LGBTQI+ people, women, and young emerging leaders, are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
     </div>
     <div class="vm-divider"></div>
     <div class="vm-block vm-mission reveal">
       <div class="vm-label">Mission</div>
       <div class="vm-icon">🎯</div>
       <h3 class="vm-title">What we're here to do</h3>
-      <p class="vm-text">Tukonnect Digital Hub builds the digital knowledge, safety, and advocacy power of marginalised communities in Kisumu. We grow AI literacy that goes beyond tools to help people understand how these systems can protect or endanger them; we build data skills that help communities tell their own stories and hold power to account; and we bring Kisumu voices into the national policy conversations shaping Kenya's digital future — starting with AI governance.</p>
+      <p class="vm-text">Tukonnect Digital Hub builds the digital knowledge, safety, and advocacy power of marginalised communities in Kisumu. We grow AI literacy that goes beyond tools to help people understand how these systems can protect or endanger them. We build data skills that help communities tell their own stories and hold power to account. And we bring Kisumu voices into the national policy conversations shaping Kenya's digital future, starting with AI governance.</p>
     </div>
   </div>
 </section>
@@ -981,7 +1201,7 @@
         <div class="value-num">02</div>
         <div class="value-icon">🌈</div>
         <div class="value-name">Radical Inclusion</div>
-        <p class="value-desc">LGBTQI+ identities, gender, and lived experience are central to our work — not an afterthought.</p>
+        <p class="value-desc">LGBTQI+ identities, gender, and lived experience are central to our work. Not an afterthought.</p>
       </div>
       <div class="value-item reveal">
         <div class="value-num">03</div>
@@ -1013,7 +1233,7 @@
       <h2 class="section-title">Four areas. One community.</h2>
     </div>
     <p class="focus-intro reveal">
-      Our programmes are designed with and for the communities we serve — building digital knowledge, safety, and advocacy power from Kisumu.
+      Our programmes are designed with and for the communities we serve. Building digital knowledge, safety, and advocacy power from Kisumu.
     </p>
   </div>
   <div class="focus-grid">
@@ -1021,25 +1241,25 @@
       <div class="focus-num">01</div>
       <div class="focus-icon-bg">💻</div>
       <div class="focus-name">AI Literacy & Digital Skills</div>
-      <p class="focus-desc">We run accessible, community-centred training on digital tools and artificial intelligence — going beyond how to use AI, to help people understand how AI systems can protect or endanger them. Our sessions are designed for those who have been told tech is not for them: women, LGBTQI+ individuals, and young people in Kisumu.</p>
+      <p class="focus-desc">We run accessible, community-centred training on digital tools and artificial intelligence. We go beyond how to use AI to help people understand how these systems can protect or endanger them. Our sessions are designed for those who have been told tech is not for them: women, LGBTQI+ individuals, and young people in Kisumu.</p>
     </div>
     <div class="focus-card reveal">
       <div class="focus-num">02</div>
       <div class="focus-icon-bg">📊</div>
       <div class="focus-name">Data Literacy & Community Storytelling</div>
-      <p class="focus-desc">Communities in Kisumu are increasingly subjects of data collection — yet rarely understand how their data is used or how to use data themselves. We build the skills for communities to collect, read, and use data for their own advocacy, storytelling, and accountability work.</p>
+      <p class="focus-desc">Communities in Kisumu are increasingly subjects of data collection, yet rarely understand how their data is used or how to use data themselves. We build the skills for communities to collect, read, and use data for their own advocacy, storytelling, and accountability work.</p>
     </div>
     <div class="focus-card reveal">
       <div class="focus-num">03</div>
       <div class="focus-icon-bg">🏛️</div>
       <div class="focus-name">AI Policy & Digital Rights Advocacy</div>
-      <p class="focus-desc">Kenya's AI governance landscape is being shaped right now — and Kisumu voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national processes that will affect their lives.</p>
+      <p class="focus-desc">Kenya's AI governance landscape is being shaped right now, and Kisumu voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national processes that will affect their lives.</p>
     </div>
     <div class="focus-card reveal">
       <div class="focus-num">04</div>
       <div class="focus-icon-bg">🌱</div>
       <div class="focus-name">Fellowships & Leadership Development</div>
-      <p class="focus-desc">Through YELP — the Young and Emerging Leaders Project — we invest in the next generation of Kisumu's digital leaders. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
+      <p class="focus-desc">Through YELP (the Young and Emerging Leaders Project) we invest in the next generation of Kisumu's digital leaders. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
     </div>
   </div>
 </section>
@@ -1118,6 +1338,85 @@
   </div>
 </section>
 
+<!-- OPPORTUNITIES -->
+<section class="opportunities" id="opportunities">
+  <div class="opp-inner">
+    <div class="opp-header reveal">
+      <div class="about-label">Opportunities</div>
+      <h2 class="section-title">Open calls for you.</h2>
+      <p>Fellowships, trainings, and open calls from Tukonnect and across our network. We share what we know about.</p>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-card type-fellowship reveal">
+        <div class="opp-type">Fellowship</div>
+        <div class="opp-title">YELP: Young and Emerging Leaders Project</div>
+        <p class="opp-desc">Our flagship six-month programme for young digital leaders in East Africa. Applications open in 2025. Skills, mentorship, and a community that stays with you.</p>
+        <div class="opp-meta">
+          <span class="opp-tag">East Africa</span>
+          <span class="opp-tag">6 Months</span>
+          <span class="opp-tag">Ages 18-35</span>
+        </div>
+        <a href="#contact" class="opp-link">Register interest →</a>
+      </div>
+      <div class="opp-card type-training reveal">
+        <div class="opp-type">Training</div>
+        <div class="opp-title">AI Literacy for Community Organisations</div>
+        <p class="opp-desc">A short workshop series helping civil society organisations understand AI tools and the risks they carry for the communities they serve.</p>
+        <div class="opp-meta">
+          <span class="opp-tag">Kisumu</span>
+          <span class="opp-tag">Free</span>
+          <span class="opp-tag">CSOs</span>
+        </div>
+        <a href="#contact" class="opp-link">Express interest →</a>
+      </div>
+      <div class="opp-card type-open reveal">
+        <div class="opp-type">Open Call</div>
+        <div class="opp-title">Share an Opportunity With Our Community</div>
+        <p class="opp-desc">Know of a fellowship, grant, or training that would benefit our community? Send it our way and we will share it through our network.</p>
+        <div class="opp-meta">
+          <span class="opp-tag">Network</span>
+          <span class="opp-tag">Share</span>
+        </div>
+        <a href="mailto:bwakwaya2@gmail.com" class="opp-link">Send it to us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-header reveal">
+    <div class="blog-header-left">
+      <div class="about-label">From the Community</div>
+      <h2 class="section-title">Thoughts, stories, and updates.</h2>
+    </div>
+    <a href="#blog" class="blog-all-link">All posts →</a>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card featured reveal">
+      <div class="blog-img-placeholder c1">🌍</div>
+      <div class="blog-cat">AI Governance</div>
+      <div class="blog-title">What the Kenya AI Bill 2026 Means for Marginalised Communities</div>
+      <p class="blog-excerpt">Kenya is writing its AI rules right now. We read the draft bill and looked at what it says, what it misses, and what communities in Kisumu need to know before it passes.</p>
+      <div class="blog-meta">Brenda Wakwaya · May 2025</div>
+    </div>
+    <div class="blog-card reveal">
+      <div class="blog-img-placeholder c2">📱</div>
+      <div class="blog-cat">Digital Safety</div>
+      <div class="blog-title">Your Data, Your Rights: A Plain-Language Guide for LGBTQI+ Communities</div>
+      <p class="blog-excerpt">What platforms collect, how it can be used against you, and practical steps to protect yourself online.</p>
+      <div class="blog-meta">Tukonnect Team · April 2025</div>
+    </div>
+    <div class="blog-card reveal">
+      <div class="blog-img-placeholder c3">✊</div>
+      <div class="blog-cat">Community Voice</div>
+      <div class="blog-title">Why Kisumu Needs to Be in the Room Where AI Policy is Made</div>
+      <p class="blog-excerpt">Nairobi dominates Kenya's tech conversations. Here is why that matters and what we are doing about it from Kisumu.</p>
+      <div class="blog-meta">Brenda Wakwaya · March 2025</div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -1133,7 +1432,7 @@
             <div class="contact-item-icon">👤</div>
             <div>
               <div class="contact-item-label">Contact Person</div>
-              <div class="contact-item-value">Brenda Wakwaya — Founder & Director</div>
+              <div class="contact-item-value">Brenda Wakwaya, Founder &amp; Director</div>
             </div>
           </div>
           <div class="contact-item">
