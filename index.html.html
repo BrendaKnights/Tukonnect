@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tukonnect Digital Hub · Kisumu, Kenya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0b7b6e;
+    --teal-light: #12a898;
+    --teal-deep: #065a52;
+    --orange: #e8622a;
+    --orange-light: #f4895a;
+    --gold: #f5c842;
+    --cream: #faf6ef;
+    --ink: #1a1410;
+    --ink-soft: #3d3028;
+    --mid: #7a6e65;
+    --pride-1: #e8622a;
+    --pride-2: #f5c842;
+    --pride-3: #0b7b6e;
+    --pride-4: #3a7bd5;
+    --pride-5: #9b59b6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(250,246,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(11,123,110,0.12);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--teal-deep);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--teal-deep);
+    padding: 10rem 4rem 5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: 0; bottom: 0;
+    width: 120px;
+    background: var(--teal-deep);
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    z-index: 3;
+  }
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal-light);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    max-width: 420px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.22s;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    border: 2px solid var(--orange);
+  }
+  .btn-primary:hover { background: var(--orange-light); border-color: var(--orange-light); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .btn-ghost:hover { border-color: #fff; }
+
+  .hero-right {
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(232,98,42,0.12) 0%, transparent 55%),
+      radial-gradient(circle at 75% 70%, rgba(11,123,110,0.1) 0%, transparent 50%);
+  }
+  .hero-graphic {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .circle-stack {
+    position: relative;
+    width: 380px; height: 380px;
+  }
+  .circle-stack .ring {
+    position: absolute; border-radius: 50%;
+    animation: spinSlow 18s linear infinite;
+  }
+  .ring-1 {
+    inset: 0;
+    border: 2px solid rgba(11,123,110,0.25);
+    animation-direction: normal;
+  }
+  .ring-2 {
+    inset: 40px;
+    border: 1.5px solid rgba(232,98,42,0.2);
+    animation-direction: reverse;
+    animation-duration: 24s;
+  }
+  .ring-3 {
+    inset: 80px;
+    border: 1px solid rgba(245,200,66,0.3);
+    animation-duration: 30s;
+  }
+  .hero-orb {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 20px 60px rgba(11,123,110,0.35);
+  }
+  .hero-orb-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2;
+  }
+  .hero-dots {
+    position: absolute;
+    bottom: 15%; right: 15%;
+    display: grid; grid-template-columns: repeat(6,12px); gap: 10px;
+    opacity: 0.4;
+  }
+  .hero-dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal);
+    display: block;
+  }
+  .hero-est {
+    position: absolute;
+    bottom: 3rem; right: 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+  }
+  .pride-stripe {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(to right, var(--pride-1), var(--pride-2), var(--pride-3), var(--pride-4), var(--pride-5));
+  }
+
+  /* ---- TAGLINE BAND ---- */
+  .tagline-band {
+    background: var(--ink);
+    padding: 1.8rem 0;
+    overflow: hidden;
+  }
+  .tagline-scroll {
+    display: flex; gap: 4rem;
+    animation: scroll 20s linear infinite;
+    width: max-content;
+  }
+  .tagline-scroll span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+  }
+  .tagline-scroll span.accent { color: var(--orange-light); }
+
+  /* ---- ABOUT ---- */
+  .about {
+    padding: 8rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .about-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--teal-deep);
+    margin-bottom: 1.5rem;
+  }
+  .about-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .about-right {
+    position: relative;
+  }
+  .about-card {
+    background: var(--teal-deep);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 12rem;
+    color: rgba(255,255,255,0.05);
+    position: absolute;
+    top: -2rem; left: 1rem;
+    line-height: 1;
+  }
+  .about-card p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+  }
+  .about-card .vision-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--teal-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-style: normal;
+  }
+  .about-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--orange), var(--gold));
+  }
+  .about-accent {
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.15;
+    z-index: -1;
+  }
+
+  /* ---- VALUES ---- */
+  .values-section {
+    background: var(--ink);
+    padding: 7rem 5rem;
+  }
+  .values-inner { max-width: 1300px; margin: 0 auto; }
+  .values-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 2rem;
+  }
+  .values-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+  }
+  .values-sub {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    max-width: 240px;
+    text-align: right;
+    line-height: 1.6;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .value-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .value-item:last-child { border-right: none; }
+  .value-item:hover { background: rgba(11,123,110,0.12); }
+  .value-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .value-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .value-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.7rem;
+  }
+  .value-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+
+  /* ---- VISION & MISSION ---- */
+  .vision-mission-section {
+    background: var(--ink);
+    padding: 7rem 5rem;
+  }
+  .vision-mission-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .vm-divider { display: none; }
+  .vm-block {
+    padding: 1rem 3.5rem 1rem 0;
+  }
+  .vm-block.vm-mission {
+    padding: 1rem 0 1rem 3.5rem;
+    border-left: 1px solid rgba(255,255,255,0.07);
+  }
+  .vm-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(232,98,42,0.25);
+    padding-bottom: 0.8rem;
+  }
+  .vm-vision .vm-label { color: var(--gold); border-color: rgba(245,200,66,0.25); }
+  .vm-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .vm-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.2rem;
+  }
+  .vm-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  /* ---- FOCUS AREAS ---- */
+  .focus {
+    padding: 8rem 5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .focus-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: end;
+  }
+  .focus-intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--mid);
+    font-weight: 300;
+    padding-top: 1rem;
+  }
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(11,123,110,0.1);
+  }
+  .focus-card {
+    background: var(--cream);
+    padding: 3.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .focus-card:hover {
+    background: var(--teal-deep);
+    z-index: 2;
+  }
+  .focus-card:hover .focus-name,
+  .focus-card:hover .focus-desc { color: #fff; }
+  .focus-card:hover .focus-icon-bg { background: rgba(255,255,255,0.1); }
+  .focus-card:hover .focus-num { color: rgba(255,255,255,0.15); }
+  .focus-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(11,123,110,0.07);
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .focus-icon-bg {
+    width: 52px; height: 52px;
+    border-radius: 4px;
+    background: rgba(11,123,110,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s;
+  }
+  .focus-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--teal-deep);
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+  .focus-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--mid);
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+
+  /* ---- WHO WE SERVE ---- */
+  .serve {
+    background: linear-gradient(135deg, var(--teal-deep) 0%, #043d37 100%);
+    padding: 8rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .serve::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(232,98,42,0.08);
+  }
+  .serve::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(245,200,66,0.06);
+  }
+  .serve-inner { max-width: 1300px; margin: 0 auto; position: relative; }
+  .serve-header { margin-bottom: 4rem; }
+  .serve-header .section-title { color: #fff; }
+  .serve-header .about-label { color: var(--gold); }
+  .serve-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+  .serve-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem 1.5rem;
+    border-radius: 2px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s;
+  }
+  .serve-card:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .serve-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .serve-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+
+  /* ---- YELP FEATURE ---- */
+  .yelp {
+    padding: 8rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .yelp-visual {
+    position: relative;
+    height: 400px;
+  }
+  .yelp-bg-card {
+    position: absolute;
+    inset: 0;
+    background: var(--orange);
+    transform: rotate(3deg);
+    border-radius: 2px;
+    opacity: 0.15;
+  }
+  .yelp-main-card {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .yelp-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--orange-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .yelp-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .yelp-name span { color: var(--gold); }
+  .yelp-meta {
+    display: flex; gap: 2rem;
+  }
+  .yelp-stat { }
+  .yelp-stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--teal-light);
+  }
+  .yelp-stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .yelp-pride {
+    height: 4px;
+    background: linear-gradient(to right, var(--pride-1), var(--pride-2), var(--pride-3), var(--pride-4), var(--pride-5));
+  }
+  .yelp-content .about-label { color: var(--orange); }
+  .yelp-content .section-title { color: var(--teal-deep); }
+  .yelp-bullets {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+  .yelp-bullets li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(11,123,110,0.08);
+  }
+  .yelp-bullets li::before {
+    content: '→';
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact {
+    background: var(--ink);
+    padding: 8rem 5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-inner { max-width: 1300px; margin: 0 auto; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    margin-bottom: 6rem;
+  }
+  .contact-left .section-title { color: #fff; }
+  .contact-left .about-label { color: var(--orange); }
+  .contact-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-top: 1rem;
+    max-width: 460px;
+  }
+  .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .contact-item-icon {
+    width: 36px; height: 36px;
+    border-radius: 2px;
+    background: rgba(11,123,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.2rem;
+  }
+  .contact-item-value {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .contact-right {
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .partner-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 3rem;
+    position: relative;
+  }
+  .partner-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--orange), var(--gold));
+  }
+  .partner-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .partner-box p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .partner-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(11,123,110,0.4);
+    color: var(--teal-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  .footer-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .footer-center {
+    display: flex; gap: 0;
+    height: 10px;
+  }
+  .footer-center span {
+    width: 30px; height: 10px;
+  }
+  .footer-right {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 8rem 2rem 4rem; min-height: 70vh; }
+    .hero-right { min-height: 40vh; }
+    .hero-left::after { display: none; }
+    .about { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .value-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .focus-header { grid-template-columns: 1fr; }
+    .focus-grid { grid-template-columns: 1fr; }
+    .focus { padding: 5rem 2rem; }
+    .serve { padding: 5rem 2rem; }
+    .serve-grid { grid-template-columns: 1fr 1fr; }
+    .yelp { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact { padding: 5rem 2rem 3rem; }
+    .footer { flex-direction: column; gap: 1.5rem; padding: 2rem; text-align: center; }
+    .vision-mission-inner { grid-template-columns: 1fr; }
+    .vm-block { padding: 0 0 3rem 0 !important; border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 3rem; }
+    .vision-mission-section { padding: 5rem 2rem; }
+    .values-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .values-sub { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Tukonnect</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Our Work</a></li>
+    <li><a href="#yelp">YELP</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Kisumu, Kenya · Est. 2025</div>
+    <h1 class="hero-title">
+      People.<br>
+      Connection.<br>
+      <em>Technology.</em>
+    </h1>
+    <p class="hero-desc">
+      We work at the intersection of AI, digital rights, and community — bringing the communities most often left out into the conversations shaping Kenya's digital future.
+    </p>
+    <div class="hero-cta">
+      <a href="#focus" class="btn btn-primary">Explore Our Work</a>
+      <a href="#contact" class="btn btn-ghost">Partner With Us</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-graphic">
+      <div class="circle-stack">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="hero-orb">
+          <div class="hero-orb-text">
+            AI Literacy<br>Digital Rights<br>Community Power
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-est">EST · 2025 · KISUMU</div>
+    <div class="pride-stripe"></div>
+  </div>
+</section>
+
+<!-- TAGLINE BAND -->
+<div class="tagline-band">
+  <div class="tagline-scroll">
+    <span>AI Literacy</span><span class="accent">·</span>
+    <span>Digital Rights</span><span class="accent">·</span>
+    <span>Community Advocacy</span><span class="accent">·</span>
+    <span>Data Storytelling</span><span class="accent">·</span>
+    <span>LGBTQI+ Inclusion</span><span class="accent">·</span>
+    <span>Kisumu, Kenya</span><span class="accent">·</span>
+    <span>Policy Engagement</span><span class="accent">·</span>
+    <span>Women in Tech</span><span class="accent">·</span>
+    <!-- duplicate for seamless loop -->
+    <span>AI Literacy</span><span class="accent">·</span>
+    <span>Digital Rights</span><span class="accent">·</span>
+    <span>Community Advocacy</span><span class="accent">·</span>
+    <span>Data Storytelling</span><span class="accent">·</span>
+    <span>LGBTQI+ Inclusion</span><span class="accent">·</span>
+    <span>Kisumu, Kenya</span><span class="accent">·</span>
+    <span>Policy Engagement</span><span class="accent">·</span>
+    <span>Women in Tech</span><span class="accent">·</span>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="about-label">Who We Are</div>
+    <h2 class="section-title">A startup rooted in Kisumu.</h2>
+    <p class="about-body">Tukonnect Digital Hub is a Kisumu-based startup working at the intersection of technology, inclusion, and community. We launched in 2025 out of a simple observation: digital tools, AI, and the conversations shaping them are largely happening without the people who need them most.</p>
+    <p class="about-body">We exist to change that. From our base in Kisumu, we support LGBTQI+ communities, women in tech, and young emerging leaders to build digital skills, understand their rights in digital spaces, shape AI policy conversations, and develop as the next generation of Kenyan thought leaders.</p>
+    <p class="about-body">We are small, intentional, and rooted in Kisumu — and the work we do here matters.</p>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-accent"></div>
+    <div class="about-card">
+      <p>
+        <span class="vision-label">About</span>
+        Tukonnect Digital Hub is a Kisumu-based startup working at the intersection of technology, inclusion, and community. Small, intentional, and rooted — building from home.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & MISSION -->
+<section class="vision-mission-section">
+  <div class="vision-mission-inner">
+    <div class="vm-block vm-vision reveal">
+      <div class="vm-label">Vision</div>
+      <div class="vm-icon">🔭</div>
+      <h3 class="vm-title">Where we're going</h3>
+      <p class="vm-text">A Kisumu where communities most often left out — LGBTQI+ people, women, and young emerging leaders — are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
+    </div>
+    <div class="vm-divider"></div>
+    <div class="vm-block vm-mission reveal">
+      <div class="vm-label">Mission</div>
+      <div class="vm-icon">🎯</div>
+      <h3 class="vm-title">What we're here to do</h3>
+      <p class="vm-text">Tukonnect Digital Hub builds the digital knowledge, safety, and advocacy power of marginalised communities in Kisumu. We grow AI literacy that goes beyond tools to help people understand how these systems can protect or endanger them; we build data skills that help communities tell their own stories and hold power to account; and we bring Kisumu voices into the national policy conversations shaping Kenya's digital future — starting with AI governance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="values-header reveal">
+      <h2 class="values-title">What We Stand For</h2>
+      <p class="values-sub">Five principles that guide everything we do in Kisumu and beyond.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-item reveal">
+        <div class="value-num">01</div>
+        <div class="value-icon">🫂</div>
+        <div class="value-name">People First</div>
+        <p class="value-desc">Technology is a tool, not the point. People are.</p>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">02</div>
+        <div class="value-icon">🌈</div>
+        <div class="value-name">Radical Inclusion</div>
+        <p class="value-desc">LGBTQI+ identities, gender, and lived experience are central to our work — not an afterthought.</p>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">03</div>
+        <div class="value-icon">📍</div>
+        <div class="value-name">Rooted in Kisumu</div>
+        <p class="value-desc">This is our home. We do not speak for communities we are not part of.</p>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">04</div>
+        <div class="value-icon">🔍</div>
+        <div class="value-name">Honest Accountability</div>
+        <p class="value-desc">To our communities, our funders, and ourselves.</p>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">05</div>
+        <div class="value-icon">🌱</div>
+        <div class="value-name">Learning As We Go</div>
+        <p class="value-desc">We are a startup. We try things, we learn, we improve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section class="focus" id="focus">
+  <div class="focus-header">
+    <div class="reveal">
+      <div class="about-label">Focus Areas</div>
+      <h2 class="section-title">Four areas. One community.</h2>
+    </div>
+    <p class="focus-intro reveal">
+      Our programmes are designed with and for the communities we serve — building digital knowledge, safety, and advocacy power from Kisumu.
+    </p>
+  </div>
+  <div class="focus-grid">
+    <div class="focus-card reveal">
+      <div class="focus-num">01</div>
+      <div class="focus-icon-bg">💻</div>
+      <div class="focus-name">AI Literacy & Digital Skills</div>
+      <p class="focus-desc">We run accessible, community-centred training on digital tools and artificial intelligence — going beyond how to use AI, to help people understand how AI systems can protect or endanger them. Our sessions are designed for those who have been told tech is not for them: women, LGBTQI+ individuals, and young people in Kisumu.</p>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-num">02</div>
+      <div class="focus-icon-bg">📊</div>
+      <div class="focus-name">Data Literacy & Community Storytelling</div>
+      <p class="focus-desc">Communities in Kisumu are increasingly subjects of data collection — yet rarely understand how their data is used or how to use data themselves. We build the skills for communities to collect, read, and use data for their own advocacy, storytelling, and accountability work.</p>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-num">03</div>
+      <div class="focus-icon-bg">🏛️</div>
+      <div class="focus-name">AI Policy & Digital Rights Advocacy</div>
+      <p class="focus-desc">Kenya's AI governance landscape is being shaped right now — and Kisumu voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national processes that will affect their lives.</p>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-num">04</div>
+      <div class="focus-icon-bg">🌱</div>
+      <div class="focus-name">Fellowships & Leadership Development</div>
+      <p class="focus-desc">Through YELP — the Young and Emerging Leaders Project — we invest in the next generation of Kisumu's digital leaders. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="serve">
+  <div class="serve-inner">
+    <div class="serve-header reveal">
+      <div class="about-label">Who We Serve</div>
+      <h2 class="section-title" style="color:#fff;">Work designed with and for community.</h2>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card reveal">
+        <div class="serve-icon">🏳️‍🌈</div>
+        <div class="serve-name">LGBTQI+ individuals and community-based organisations in Kisumu and Kenya</div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🌟</div>
+        <div class="serve-name">Young people (18–35) building careers in digital, tech, and advocacy</div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">👩‍💻</div>
+        <div class="serve-name">Women entering or navigating technology and digital spaces</div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🤝</div>
+        <div class="serve-name">Civil society organisations needing digital capacity and safety support</div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🗣️</div>
+        <div class="serve-name">Community members who want to participate in AI and digital policy conversations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YELP -->
+<section class="yelp" id="yelp">
+  <div class="yelp-visual reveal">
+    <div class="yelp-bg-card"></div>
+    <div class="yelp-main-card">
+      <div>
+        <div class="yelp-tag">Flagship Programme</div>
+      </div>
+      <div>
+        <div class="yelp-name">Y<span>E</span>LP</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;letter-spacing:0.05em;">Young and Emerging Leaders Project</div>
+      </div>
+      <div class="yelp-meta">
+        <div class="yelp-stat">
+          <div class="yelp-stat-num">6</div>
+          <div class="yelp-stat-label">Month Programme</div>
+        </div>
+        <div class="yelp-stat">
+          <div class="yelp-stat-num">E.A.</div>
+          <div class="yelp-stat-label">East Africa Focus</div>
+        </div>
+        <div class="yelp-stat">
+          <div class="yelp-stat-num">2025</div>
+          <div class="yelp-stat-label">Inaugural Year</div>
+        </div>
+      </div>
+      <div class="yelp-pride"></div>
+    </div>
+  </div>
+  <div class="yelp-content reveal">
+    <div class="about-label">Leadership Development</div>
+    <h2 class="section-title">Investing in Kisumu's next generation of digital leaders.</h2>
+    <ul class="yelp-bullets">
+      <li>Hands-on digital and AI skills training tailored to emerging leaders</li>
+      <li>Mentorship from experienced practitioners across tech and advocacy</li>
+      <li>A platform and community to drive real change in your own context</li>
+      <li>Six months of structured, community-centred growth</li>
+      <li>An East African thought leadership network that lasts beyond the programme</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="about-label">Get In Touch</div>
+        <h2 class="section-title">Let's build something together.</h2>
+        <p class="contact-tagline">
+          We are open to partnerships with funders, civil society organisations, and digital rights advocates who share our commitment to inclusion and community-led change in Kisumu.
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">👤</div>
+            <div>
+              <div class="contact-item-label">Contact Person</div>
+              <div class="contact-item-value">Brenda Wakwaya — Founder & Director</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">bwakwaya2@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">+254 706 829 052</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-value">Kisumu, Kenya</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right reveal">
+        <div class="partner-box">
+          <h3>We're looking for partners in</h3>
+          <p>Funding, programme collaboration, policy research, digital rights advocacy, and community capacity building across Kisumu and East Africa.</p>
+          <div class="partner-tags">
+            <span class="tag">Funders</span>
+            <span class="tag">Civil Society</span>
+            <span class="tag">Digital Rights</span>
+            <span class="tag">AI Governance</span>
+            <span class="tag">SRHR</span>
+            <span class="tag">LGBTQI+ Orgs</span>
+            <span class="tag">Women in Tech</span>
+            <span class="tag">East Africa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Tukonnect Digital Hub · Kisumu</div>
+  <div class="footer-center">
+    <span style="background:var(--pride-1)"></span>
+    <span style="background:var(--pride-2)"></span>
+    <span style="background:var(--pride-3)"></span>
+    <span style="background:var(--pride-4)"></span>
+    <span style="background:var(--pride-5)"></span>
+  </div>
+  <div class="footer-right">Est. 2025 · People · Connection · Technology</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger reveal children in grids
+  document.querySelectorAll('.values-grid, .focus-grid, .serve-grid').forEach(grid => {
+    grid.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+</script>
+</body>
+</html>
