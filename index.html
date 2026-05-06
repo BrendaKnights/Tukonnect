@@ -1392,33 +1392,9 @@
     </div>
     <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" class="blog-all-link">All posts →</a>
   </div>
-  <div class="blog-grid">
-    <div class="blog-card featured reveal">
-      <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" style="text-decoration:none;">
-      <div class="blog-img-placeholder c1">🌍</div>
-      <div class="blog-cat">AI Governance</div>
-      <div class="blog-title">What the Kenya AI Bill 2026 Means for Marginalised Communities</div>
-      <p class="blog-excerpt">Kenya is writing its AI rules right now. We read the draft bill and looked at what it says, what it misses, and what communities in Kisumu need to know before it passes.</p>
-      <div class="blog-meta">Brenda Wakwaya · May 2025</div>
-      </a>
-    </div>
-    <div class="blog-card reveal">
-      <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" style="text-decoration:none;">
-      <div class="blog-img-placeholder c2">📱</div>
-      <div class="blog-cat">Digital Safety</div>
-      <div class="blog-title">Your Data, Your Rights: A Plain-Language Guide for LGBTQI+ Communities</div>
-      <p class="blog-excerpt">What platforms collect, how it can be used against you, and practical steps to protect yourself online.</p>
-      <div class="blog-meta">Tukonnect Team · April 2025</div>
-      </a>
-    </div>
-    <div class="blog-card reveal">
-      <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" style="text-decoration:none;">
-      <div class="blog-img-placeholder c3">✊</div>
-      <div class="blog-cat">Community Voice</div>
-      <div class="blog-title">Why Kisumu Needs to Be in the Room Where AI Policy is Made</div>
-      <p class="blog-excerpt">Nairobi dominates Kenya's tech conversations. Here is why that matters and what we are doing about it from Kisumu.</p>
-      <div class="blog-meta">Brenda Wakwaya · March 2025</div>
-      </a>
+  <div class="blog-grid" id="blog-grid">
+    <div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--mid);font-size:0.9rem;">
+      Loading posts...
     </div>
   </div>
 </section>
@@ -1513,6 +1489,66 @@
       el.style.transitionDelay = `${i * 0.08}s`;
     });
   });
+
+  // WordPress API — fetch posts from tukonnectdigitalhub.wordpress.com
+  const WORDPRESS_URL = 'https://public-api.wordpress.com/wp/v2/sites/tukonnectdigitalhub.wordpress.com/posts?per_page=3&_fields=id,title,excerpt,link,date,categories,jetpack_featured_media_url';
+
+  const colors = ['c1', 'c2', 'c3'];
+  const emojis = ['🌍', '📱', '✊'];
+
+  function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+  }
+
+  async function loadBlogPosts() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch(WORDPRESS_URL);
+      if (!res.ok) throw new Error('Failed to fetch');
+      const posts = await res.json();
+
+      if (!posts.length) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;border:1px dashed rgba(11,123,110,0.2);color:var(--mid);font-size:0.9rem;line-height:1.7;"><span style="display:block;font-size:2.5rem;margin-bottom:1rem;">✍️</span>No posts yet. Check back soon.</div>`;
+        return;
+      }
+
+      grid.innerHTML = posts.map((post, i) => {
+        const title = stripHtml(post.title.rendered);
+        const excerpt = stripHtml(post.excerpt.rendered).slice(0, 140) + '...';
+        const date = formatDate(post.date);
+        const featured = i === 0;
+        const img = post.jetpack_featured_media_url
+          ? `<img src="${post.jetpack_featured_media_url}" style="width:100%;aspect-ratio:${featured ? '4/3' : '16/9'};object-fit:cover;display:block;" alt="${title}">`
+          : `<div class="blog-img-placeholder ${colors[i % 3]}" style="${featured ? 'aspect-ratio:4/3;' : ''}">${emojis[i % 3]}</div>`;
+
+        return `
+          <div class="blog-card ${featured ? 'featured' : ''} reveal">
+            <a href="${post.link}" target="_blank" style="text-decoration:none;">
+              ${img}
+              <div class="blog-cat">Tukonnect</div>
+              <div class="blog-title">${title}</div>
+              <p class="blog-excerpt">${excerpt}</p>
+              <div class="blog-meta">Tukonnect Digital Hub · ${date}</div>
+            </a>
+          </div>`;
+      }).join('');
+
+      // Re-run reveal observer on new cards
+      grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    } catch (err) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;border:1px dashed rgba(11,123,110,0.2);color:var(--mid);font-size:0.9rem;line-height:1.7;"><span style="display:block;font-size:2.5rem;margin-bottom:1rem;">📝</span>Could not load posts right now. <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" style="color:var(--teal);">Visit the blog directly.</a></div>`;
+    }
+  }
+
+  loadBlogPosts();
 </script>
 </body>
 </html>
