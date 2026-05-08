@@ -1546,42 +1546,63 @@
   loadBlogPosts();
 
   // Contact form — routes to your inbox via Formspree (no email shown publicly)
-  function submitForm() {
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const org = document.getElementById('cf-org').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
-    if (!name || !email || !message) {
-      alert('Please fill in your name, email, and message.');
-      return;
-    }
-    // To activate: go to formspree.io, create a free form linked to your email, paste the ID below
-    const FORMSPREE_ID = 'YOUR_FORM_ID';
-    const btn = document.querySelector('#contact button');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, organisation: org, message })
+ function submitForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const org = document.getElementById('cf-org').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+
+  const FORMSPREE_ID = 'meenldnr';
+
+  const btn = document.querySelector('#contact button');
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      organisation: org,
+      message
     })
-    .then(r => {
-      if (r.ok) {
-        document.getElementById('cf-status').style.display = 'block';
-        ['cf-name','cf-email','cf-org','cf-message'].forEach(id => document.getElementById(id).value = '');
-        btn.textContent = 'Sent ✓';
-      } else {
-        btn.textContent = 'Send Message →';
-        btn.disabled = false;
-        alert('Something went wrong. Please try again.');
-      }
-    })
-    .catch(() => {
+  })
+
+  .then(r => {
+    if (r.ok) {
+
+      document.getElementById('cf-status').style.display = 'block';
+
+      ['cf-name', 'cf-email', 'cf-org', 'cf-message']
+      .forEach(id => document.getElementById(id).value = '');
+
+      btn.textContent = 'Sent ✓';
+
+    } else {
+
       btn.textContent = 'Send Message →';
       btn.disabled = false;
-      alert('Network error. Please try again.');
-    });
-  }
-</script>
-</body>
-</html>
+
+      alert('Something went wrong. Please try again.');
+    }
+  })
+
+  .catch(() => {
+
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+
+    alert('Network error. Please try again.');
+
+  });
+}
