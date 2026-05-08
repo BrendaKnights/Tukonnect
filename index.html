@@ -860,21 +860,6 @@
     transition: gap 0.2s;
   }
   .opp-link:hover { gap: 0.7rem; }
-  .opp-empty {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: rgba(255,255,255,0.3);
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: 1.7;
-    grid-column: 1 / -1;
-    border: 1px dashed rgba(255,255,255,0.1);
-  }
-  .opp-empty span {
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
 
   /* ---- BLOG ---- */
   .blog {
@@ -965,17 +950,6 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .blog-coming {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 5rem 2rem;
-    border: 1px dashed rgba(11,123,110,0.2);
-    color: var(--mid);
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-  .blog-coming span { display: block; font-size: 2.5rem; margin-bottom: 1rem; }
 
   /* ---- FOOTER ---- */
   .footer {
@@ -1023,7 +997,6 @@
     to { transform: translateX(-50%); }
   }
 
-  /* Scroll reveal */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -1033,6 +1006,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ---- CONTACT FORM INPUTS ---- */
+  .cf-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    border-radius: 2px;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .cf-input:focus { border-color: var(--teal-light); }
+  .cf-input::placeholder { color: rgba(255,255,255,0.3); }
+  textarea.cf-input { height: 110px; resize: none; }
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
@@ -1132,7 +1122,6 @@
     <span>Kenya & East Africa</span><span class="accent">·</span>
     <span>Policy Engagement</span><span class="accent">·</span>
     <span>Women in Tech</span><span class="accent">·</span>
-    <!-- duplicate for seamless loop -->
     <span>AI Literacy</span><span class="accent">·</span>
     <span>Digital Rights</span><span class="accent">·</span>
     <span>Community Advocacy</span><span class="accent">·</span>
@@ -1171,7 +1160,8 @@
       <div class="vm-label">Vision</div>
       <div class="vm-icon">🔭</div>
       <h3 class="vm-title">Where we're going</h3>
-      <p class="vm-text">A Kenya and East Africa where communities most often left out: LGBTQI+ people, women, and young emerging leaders, are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
+      <!-- CHANGE 1: "A Kenya" removed — now reads cleanly as "East Africa where..." -->
+      <p class="vm-text">East Africa where communities most often left out — LGBTQI+ people, women, and young emerging leaders — are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
     </div>
     <div class="vm-divider"></div>
     <div class="vm-block vm-mission reveal">
@@ -1215,11 +1205,12 @@
         <div class="value-name">Honest Accountability</div>
         <p class="value-desc">To our communities, our funders, and ourselves.</p>
       </div>
+      <!-- CHANGE 2: "Learning As We Go" replaced — removed "startup / learning on the job" framing -->
       <div class="value-item reveal">
         <div class="value-num">05</div>
         <div class="value-icon">🌱</div>
-        <div class="value-name">Learning As We Go</div>
-        <p class="value-desc">We are a startup. We try things, we learn, we improve.</p>
+        <div class="value-name">Grounded in Practice</div>
+        <p class="value-desc">Our work is rooted in real experience within the communities we serve. We reflect, adapt, and grow with intention.</p>
       </div>
     </div>
   </div>
@@ -1255,11 +1246,12 @@
       <div class="focus-name">AI Policy & Digital Rights Advocacy</div>
       <p class="focus-desc">Kenya and East Africa's AI governance landscape is being shaped right now, and community voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national and regional processes that will affect their lives.</p>
     </div>
+    <!-- CHANGE 3: "digital leaders" replaced with "informed leaders" -->
     <div class="focus-card reveal">
       <div class="focus-num">04</div>
       <div class="focus-icon-bg">🌱</div>
       <div class="focus-name">Fellowships & Leadership Development</div>
-      <p class="focus-desc">Through YELP (the Young and Emerging Leaders Project) we invest in the next generation of Kisumu's digital leaders. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
+      <p class="focus-desc">Through YELP (the Young and Emerging Leaders Project) we invest in the next generation of informed, values-driven leaders across East Africa. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
     </div>
   </div>
 </section>
@@ -1327,7 +1319,8 @@
   </div>
   <div class="yelp-content reveal">
     <div class="about-label">Leadership Development</div>
-    <h2 class="section-title">Investing in East Africa's next generation of digital leaders.</h2>
+    <!-- CHANGE 3 also reflected here: "informed leaders" not "digital leaders" -->
+    <h2 class="section-title">Investing in East Africa's next generation of informed leaders.</h2>
     <ul class="yelp-bullets">
       <li>Hands-on digital and AI skills training tailored to emerging leaders</li>
       <li>Mentorship from experienced practitioners across tech and advocacy</li>
@@ -1350,7 +1343,7 @@
       <div class="opp-card type-fellowship reveal">
         <div class="opp-type">Fellowship</div>
         <div class="opp-title">YELP: Young and Emerging Leaders Project</div>
-        <p class="opp-desc">Our flagship six-month programme for young digital leaders in East Africa. Applications open in 2025. Skills, mentorship, and a community that stays with you.</p>
+        <p class="opp-desc">Our flagship six-month programme for young leaders in East Africa. Applications open in 2025. Skills, mentorship, and a community that stays with you.</p>
         <div class="opp-meta">
           <span class="opp-tag">East Africa</span>
           <span class="opp-tag">6 Months</span>
@@ -1369,6 +1362,7 @@
         </div>
         <a href="#contact" class="opp-link">Express interest →</a>
       </div>
+      <!-- CHANGE 4: Removed personal email link — replaced with #contact anchor -->
       <div class="opp-card type-open reveal">
         <div class="opp-type">Open Call</div>
         <div class="opp-title">Share an Opportunity With Our Community</div>
@@ -1377,7 +1371,7 @@
           <span class="opp-tag">Network</span>
           <span class="opp-tag">Share</span>
         </div>
-        <a href="mailto:bwakwaya2@gmail.com" class="opp-link">Send it to us →</a>
+        <a href="#contact" class="opp-link">Get in touch →</a>
       </div>
     </div>
   </div>
@@ -1400,6 +1394,7 @@
 </section>
 
 <!-- CONTACT -->
+<!-- CHANGE 4: Contact section — personal email/phone removed from display; replaced with contact form that routes to inbox -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-grid">
@@ -1411,50 +1406,58 @@
         </p>
         <div class="contact-details">
           <div class="contact-item">
-            <div class="contact-item-icon">👤</div>
-            <div>
-              <div class="contact-item-label">Contact Person</div>
-              <div class="contact-item-value">Brenda Wakwaya, Founder &amp; Director</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
-            <div>
-              <div class="contact-item-label">Email</div>
-              <div class="contact-item-value">bwakwaya2@gmail.com</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div>
-              <div class="contact-item-label">Phone</div>
-              <div class="contact-item-value">+254 706 829 052</div>
-            </div>
-          </div>
-          <div class="contact-item">
             <div class="contact-item-icon">📍</div>
             <div>
               <div class="contact-item-label">Location</div>
               <div class="contact-item-value">Kisumu, Kenya</div>
             </div>
           </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌍</div>
+            <div>
+              <div class="contact-item-label">Serving</div>
+              <div class="contact-item-value">Kenya & East Africa, globally remote</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">Response Time</div>
+              <div class="contact-item-value">Within 2 business days</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">We work with</div>
+              <div class="contact-item-value">NGOs, CSOs, social enterprises & funders</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="contact-right reveal">
-        <div class="partner-box">
-          <h3>We're looking for partners in</h3>
-          <p>Funding, programme collaboration, policy research, digital rights advocacy, and community capacity building across Kenya and East Africa.</p>
-          <div class="partner-tags">
-            <span class="tag">Funders</span>
-            <span class="tag">Civil Society</span>
-            <span class="tag">Digital Rights</span>
-            <span class="tag">AI Governance</span>
-            <span class="tag">SRHR</span>
-            <span class="tag">LGBTQI+ Orgs</span>
-            <span class="tag">Women in Tech</span>
-            <span class="tag">East Africa</span>
-          </div>
+        <div class="partner-box" style="display:flex;flex-direction:column;gap:1rem;">
+          <h3>Send us a message</h3>
+          <p style="margin-bottom:0.5rem;">Fill in the form and we'll get back to you directly.</p>
+          <input type="text" id="cf-name" class="cf-input" placeholder="Your name" />
+          <input type="email" id="cf-email" class="cf-input" placeholder="Your email" />
+          <input type="text" id="cf-org" class="cf-input" placeholder="Organisation / Project" />
+          <textarea id="cf-message" class="cf-input" placeholder="Tell us about your project or inquiry…"></textarea>
+          <button onclick="submitForm()" style="background:var(--orange);color:#fff;border:none;padding:0.85rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.05em;cursor:pointer;border-radius:2px;transition:background 0.2s;width:100%;">Send Message →</button>
+          <p id="cf-status" style="font-size:0.82rem;color:var(--teal-light);display:none;">✓ Message sent! We'll be in touch soon.</p>
         </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:3rem;">
+      <div class="partner-tags">
+        <span class="tag">Funders</span>
+        <span class="tag">Civil Society</span>
+        <span class="tag">Digital Rights</span>
+        <span class="tag">AI Governance</span>
+        <span class="tag">SRHR</span>
+        <span class="tag">LGBTQI+ Orgs</span>
+        <span class="tag">Women in Tech</span>
+        <span class="tag">East Africa</span>
       </div>
     </div>
   </div>
@@ -1483,16 +1486,14 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Stagger reveal children in grids
   document.querySelectorAll('.values-grid, .focus-grid, .serve-grid').forEach(grid => {
     grid.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.08}s`;
     });
   });
 
-  // WordPress API — fetch posts from tukonnectdigitalhub.wordpress.com
+  // WordPress blog posts
   const WORDPRESS_URL = 'https://public-api.wordpress.com/wp/v2/sites/tukonnectdigitalhub.wordpress.com/posts?per_page=3&_fields=id,title,excerpt,link,date,categories,jetpack_featured_media_url';
-
   const colors = ['c1', 'c2', 'c3'];
   const emojis = ['🌍', '📱', '✊'];
 
@@ -1513,12 +1514,10 @@
       const res = await fetch(WORDPRESS_URL);
       if (!res.ok) throw new Error('Failed to fetch');
       const posts = await res.json();
-
       if (!posts.length) {
         grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;border:1px dashed rgba(11,123,110,0.2);color:var(--mid);font-size:0.9rem;line-height:1.7;"><span style="display:block;font-size:2.5rem;margin-bottom:1rem;">✍️</span>No posts yet. Check back soon.</div>`;
         return;
       }
-
       grid.innerHTML = posts.map((post, i) => {
         const title = stripHtml(post.title.rendered);
         const excerpt = stripHtml(post.excerpt.rendered).slice(0, 140) + '...';
@@ -1527,7 +1526,6 @@
         const img = post.jetpack_featured_media_url
           ? `<img src="${post.jetpack_featured_media_url}" style="width:100%;aspect-ratio:${featured ? '4/3' : '16/9'};object-fit:cover;display:block;" alt="${title}">`
           : `<div class="blog-img-placeholder ${colors[i % 3]}" style="${featured ? 'aspect-ratio:4/3;' : ''}">${emojis[i % 3]}</div>`;
-
         return `
           <div class="blog-card ${featured ? 'featured' : ''} reveal">
             <a href="${post.link}" target="_blank" style="text-decoration:none;">
@@ -1539,16 +1537,51 @@
             </a>
           </div>`;
       }).join('');
-
-      // Re-run reveal observer on new cards
       grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     } catch (err) {
       grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;border:1px dashed rgba(11,123,110,0.2);color:var(--mid);font-size:0.9rem;line-height:1.7;"><span style="display:block;font-size:2.5rem;margin-bottom:1rem;">📝</span>Could not load posts right now. <a href="https://tukonnectdigitalhub.wordpress.com/" target="_blank" style="color:var(--teal);">Visit the blog directly.</a></div>`;
     }
   }
 
   loadBlogPosts();
+
+  // Contact form — routes to your inbox via Formspree (no email shown publicly)
+  function submitForm() {
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const org = document.getElementById('cf-org').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+    // To activate: go to formspree.io, create a free form linked to your email, paste the ID below
+    const FORMSPREE_ID = 'YOUR_FORM_ID';
+    const btn = document.querySelector('#contact button');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, organisation: org, message })
+    })
+    .then(r => {
+      if (r.ok) {
+        document.getElementById('cf-status').style.display = 'block';
+        ['cf-name','cf-email','cf-org','cf-message'].forEach(id => document.getElementById(id).value = '');
+        btn.textContent = 'Sent ✓';
+      } else {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Network error. Please try again.');
+    });
+  }
 </script>
 </body>
 </html>
