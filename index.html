@@ -40,19 +40,20 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
+    padding: 1rem 3rem;
     background: rgba(250,246,239,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(11,123,110,0.12);
   }
   .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--teal-deep);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    height: 40px;
+  }
+  .nav-logo svg {
+    height: 38px;
+    width: auto;
   }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
@@ -92,6 +93,18 @@
     clip-path: polygon(0 0, 0 100%, 100% 100%);
     z-index: 3;
   }
+
+  /* Hero logo lockup */
+  .hero-logo-lockup {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+  .hero-logo-lockup svg {
+    width: 260px;
+    height: auto;
+  }
+
   .hero-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
@@ -633,7 +646,6 @@
   .yelp-meta {
     display: flex; gap: 2rem;
   }
-  .yelp-stat { }
   .yelp-stat-num {
     font-family: 'Space Mono', monospace;
     font-size: 1.8rem;
@@ -897,16 +909,6 @@
     transition: transform 0.3s;
   }
   .blog-card:hover { transform: translateY(-4px); }
-  .blog-card.featured { grid-row: span 1; }
-  .blog-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-    background: linear-gradient(135deg, var(--teal-deep), var(--teal));
-    position: relative;
-    overflow: hidden;
-  }
   .blog-img-placeholder {
     width: 100%;
     aspect-ratio: 16/9;
@@ -959,7 +961,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 100%;
   }
   .footer-logo {
     font-family: 'Space Mono', monospace;
@@ -982,6 +983,23 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+
+  /* ---- CONTACT FORM ---- */
+  .cf-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    border-radius: 2px;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .cf-input:focus { border-color: var(--teal-light); }
+  .cf-input::placeholder { color: rgba(255,255,255,0.3); }
+  textarea.cf-input { height: 110px; resize: none; }
 
   /* ---- ANIMATIONS ---- */
   @keyframes fadeUp {
@@ -1007,31 +1025,15 @@
     transform: translateY(0);
   }
 
-  /* ---- CONTACT FORM INPUTS ---- */
-  .cf-input {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 0.75rem 1rem;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    border-radius: 2px;
-    width: 100%;
-    transition: border-color 0.2s;
-  }
-  .cf-input:focus { border-color: var(--teal-light); }
-  .cf-input::placeholder { color: rgba(255,255,255,0.3); }
-  textarea.cf-input { height: 110px; resize: none; }
-
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 8rem 2rem 4rem; min-height: 70vh; }
+    .hero-left { padding: 7rem 2rem 4rem; min-height: 70vh; }
     .hero-right { min-height: 40vh; }
     .hero-left::after { display: none; }
+    .hero-logo-lockup svg { width: 200px; }
     .about { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
     .values-grid { grid-template-columns: 1fr 1fr; }
     .value-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -1052,6 +1054,7 @@
     .blog { padding: 5rem 2rem; }
     .blog-grid { grid-template-columns: 1fr; }
     .blog-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .values-section { padding: 5rem 2rem; }
   }
 </style>
 </head>
@@ -1059,7 +1062,29 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Tukonnect</a>
+  <a class="nav-logo" href="#">
+    <!-- NAV LOGO: compact node mark + wordmark -->
+    <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" height="38" width="auto">
+      <!-- connection lines -->
+      <line x1="18" y1="20" x2="32" y2="12" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
+      <line x1="18" y1="20" x2="32" y2="28" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
+      <line x1="32" y1="12" x2="44" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
+      <line x1="32" y1="28" x2="44" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
+      <line x1="44" y1="20" x2="54" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
+      <!-- hub node -->
+      <circle cx="18" cy="20" r="7" fill="#D95F2B"/>
+      <circle cx="18" cy="20" r="2.5" fill="#fff" opacity="0.3"/>
+      <!-- secondary nodes -->
+      <circle cx="32" cy="12" r="4" fill="#F5C842"/>
+      <circle cx="32" cy="28" r="3.5" fill="#2EC4B6"/>
+      <circle cx="44" cy="20" r="3" fill="#2EC4B6"/>
+      <circle cx="54" cy="20" r="2" fill="#9B5DE5"/>
+      <!-- wordmark -->
+      <text x="64" y="26" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="17" letter-spacing="-0.5">
+        <tspan fill="#D95F2B">T</tspan><tspan fill="#065a52">ukonnect</tspan>
+      </text>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#focus">Our Work</a></li>
@@ -1073,6 +1098,42 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
+
+    <!-- HERO LOGO LOCKUP -->
+    <div class="hero-logo-lockup">
+      <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+        <!-- connection lines -->
+        <line x1="28" y1="45" x2="48" y2="28" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="28" y1="45" x2="48" y2="62" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="28" y1="45" x2="42" y2="74" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="48" y1="28" x2="68" y2="38" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="48" y1="62" x2="68" y2="52" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="48" y1="62" x2="68" y2="72" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="42" y1="74" x2="68" y2="72" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="68" y1="38" x2="82" y2="45" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <line x1="68" y1="52" x2="82" y2="45" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+        <!-- hub node -->
+        <circle cx="28" cy="45" r="13" fill="#D95F2B"/>
+        <circle cx="28" cy="45" r="5" fill="#fff" opacity="0.2"/>
+        <!-- secondary nodes -->
+        <circle cx="48" cy="28" r="7" fill="#F5C842"/>
+        <circle cx="48" cy="62" r="6" fill="#2EC4B6"/>
+        <circle cx="42" cy="74" r="4.5" fill="#9B5DE5"/>
+        <circle cx="68" cy="38" r="6" fill="#2EC4B6"/>
+        <circle cx="68" cy="52" r="4" fill="#F5C842"/>
+        <circle cx="68" cy="72" r="3.5" fill="#D95F2B"/>
+        <circle cx="82" cy="45" r="3" fill="#9B5DE5"/>
+        <!-- wordmark -->
+        <text x="100" y="52" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="32" letter-spacing="-1">
+          <tspan fill="#D95F2B">T</tspan><tspan fill="#2EC4B6">ukonnect</tspan>
+        </text>
+        <!-- divider -->
+        <rect x="100" y="60" width="172" height="1.5" fill="#D95F2B" rx="1" opacity="0.6"/>
+        <!-- sub label -->
+        <text x="102" y="76" font-family="Arial, sans-serif" font-size="9" letter-spacing="3.5" fill="rgba(255,255,255,0.55)">DIGITAL HUB</text>
+      </svg>
+    </div>
+
     <div class="hero-eyebrow">Kenya & East Africa · Est. 2025</div>
     <h1 class="hero-title">
       People.<br>
@@ -1160,7 +1221,6 @@
       <div class="vm-label">Vision</div>
       <div class="vm-icon">🔭</div>
       <h3 class="vm-title">Where we're going</h3>
-      <!-- CHANGE 1: "A Kenya" removed — now reads cleanly as "East Africa where..." -->
       <p class="vm-text">East Africa where communities most often left out — LGBTQI+ people, women, and young emerging leaders — are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
     </div>
     <div class="vm-divider"></div>
@@ -1205,7 +1265,6 @@
         <div class="value-name">Honest Accountability</div>
         <p class="value-desc">To our communities, our funders, and ourselves.</p>
       </div>
-      <!-- CHANGE 2: "Learning As We Go" replaced — removed "startup / learning on the job" framing -->
       <div class="value-item reveal">
         <div class="value-num">05</div>
         <div class="value-icon">🌱</div>
@@ -1246,7 +1305,6 @@
       <div class="focus-name">AI Policy & Digital Rights Advocacy</div>
       <p class="focus-desc">Kenya and East Africa's AI governance landscape is being shaped right now, and community voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national and regional processes that will affect their lives.</p>
     </div>
-    <!-- CHANGE 3: "digital leaders" replaced with "informed leaders" -->
     <div class="focus-card reveal">
       <div class="focus-num">04</div>
       <div class="focus-icon-bg">🌱</div>
@@ -1265,7 +1323,7 @@
     </div>
     <div class="serve-grid">
       <div class="serve-card reveal">
-        <div class="serve-icon">🏳️‍🌈</div>
+        <div class="serve-icon">🏳️🌈</div>
         <div class="serve-name">LGBTQI+ individuals and community-based organisations across Kenya and East Africa</div>
       </div>
       <div class="serve-card reveal">
@@ -1273,7 +1331,7 @@
         <div class="serve-name">Young people (18–35) building careers in digital, tech, and advocacy</div>
       </div>
       <div class="serve-card reveal">
-        <div class="serve-icon">👩‍💻</div>
+        <div class="serve-icon">👩💻</div>
         <div class="serve-name">Women entering or navigating technology and digital spaces</div>
       </div>
       <div class="serve-card reveal">
@@ -1319,7 +1377,6 @@
   </div>
   <div class="yelp-content reveal">
     <div class="about-label">Leadership Development</div>
-    <!-- CHANGE 3 also reflected here: "informed leaders" not "digital leaders" -->
     <h2 class="section-title">Investing in East Africa's next generation of informed leaders.</h2>
     <ul class="yelp-bullets">
       <li>Hands-on digital and AI skills training tailored to emerging leaders</li>
@@ -1362,7 +1419,6 @@
         </div>
         <a href="#contact" class="opp-link">Express interest →</a>
       </div>
-      <!-- CHANGE 4: Removed personal email link — replaced with #contact anchor -->
       <div class="opp-card type-open reveal">
         <div class="opp-type">Open Call</div>
         <div class="opp-title">Share an Opportunity With Our Community</div>
@@ -1394,7 +1450,6 @@
 </section>
 
 <!-- CONTACT -->
-<!-- CHANGE 4: Contact section — personal email/phone removed from display; replaced with contact form that routes to inbox -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-grid">
@@ -1545,7 +1600,7 @@
 
   loadBlogPosts();
 
-  // Contact form — routes to your inbox via Formspree (no email shown publicly)
+  // Contact form via Formspree
   function submitForm() {
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
@@ -1555,7 +1610,6 @@
       alert('Please fill in your name, email, and message.');
       return;
     }
-    // To activate: go to formspree.io, create a free form linked to your email, paste the ID below
     const FORMSPREE_ID = 'meenldnr';
     const btn = document.querySelector('#contact button');
     btn.textContent = 'Sending…';
