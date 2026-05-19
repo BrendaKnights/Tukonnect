@@ -94,7 +94,6 @@
     z-index: 3;
   }
 
-  /* Hero logo lockup */
   .hero-logo-lockup {
     margin-bottom: 2.5rem;
     opacity: 0;
@@ -274,7 +273,7 @@
   }
   .tagline-scroll span.accent { color: var(--orange-light); }
 
-  /* ---- ABOUT ---- */
+  /* ---- ABOUT THE NAME ---- */
   .about {
     padding: 8rem 5rem;
     display: grid;
@@ -310,59 +309,84 @@
   .about-right {
     position: relative;
   }
-  .about-card {
-    background: var(--teal-deep);
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
+
+  /* Name word stack */
+  .name-word-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
-  .about-card::before {
-    content: '"';
+  .name-word {
     font-family: 'Playfair Display', serif;
-    font-size: 12rem;
-    color: rgba(255,255,255,0.05);
-    position: absolute;
-    top: -2rem; left: 1rem;
-    line-height: 1;
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(11,123,110,0.12);
+    transition: padding-left 0.3s;
+    cursor: default;
+    line-height: 1.15;
   }
-  .about-card p {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.9);
-    position: relative;
+  .name-word:hover { padding-left: 0.8rem; }
+  .name-word:nth-child(1) { color: var(--pride-1); }
+  .name-word:nth-child(2) { color: var(--pride-2); }
+  .name-word:nth-child(3) { color: var(--pride-3); }
+  .name-word:nth-child(4) { color: var(--pride-4); }
+  .name-word:nth-child(5) { color: var(--pride-5); }
+  .name-word:nth-child(6) { color: var(--orange); }
+
+  /* ---- VISION & MISSION ---- */
+  .vision-mission-section {
+    background: var(--ink);
+    padding: 7rem 5rem;
   }
-  .about-card .vision-label {
+  .vision-mission-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .vm-divider { display: none; }
+  .vm-block {
+    padding: 1rem 3.5rem 1rem 0;
+  }
+  .vm-block.vm-mission {
+    padding: 1rem 0 1rem 3.5rem;
+    border-left: 1px solid rgba(255,255,255,0.07);
+  }
+  .vm-label {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem;
-    color: var(--teal-light);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-style: normal;
+    color: var(--orange);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(232,98,42,0.25);
+    padding-bottom: 0.8rem;
   }
-  .about-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--orange), var(--gold));
+  .vm-vision .vm-label { color: var(--gold); border-color: rgba(245,200,66,0.25); }
+  .vm-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .vm-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.2rem;
   }
-  .about-accent {
-    position: absolute;
-    top: -20px; right: -20px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.15;
-    z-index: -1;
+  .vm-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
   }
 
   /* ---- VALUES ---- */
   .values-section {
     background: var(--ink);
     padding: 7rem 5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
   .values-inner { max-width: 1300px; margin: 0 auto; }
   .values-header {
@@ -421,54 +445,7 @@
     font-weight: 300;
   }
 
-  /* ---- VISION & MISSION ---- */
-  .vision-mission-section {
-    background: var(--ink);
-    padding: 7rem 5rem;
-  }
-  .vision-mission-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    align-items: start;
-  }
-  .vm-divider { display: none; }
-  .vm-block {
-    padding: 1rem 3.5rem 1rem 0;
-  }
-  .vm-block.vm-mission {
-    padding: 1rem 0 1rem 3.5rem;
-    border-left: 1px solid rgba(255,255,255,0.07);
-  }
-  .vm-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(232,98,42,0.25);
-    padding-bottom: 0.8rem;
-  }
-  .vm-vision .vm-label { color: var(--gold); border-color: rgba(245,200,66,0.25); }
-  .vm-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .vm-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1.2rem;
-  }
-  .vm-text {
-    font-size: 0.95rem;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.6);
-    font-weight: 300;
-  }
-
-  /* ---- FOCUS AREAS ---- */
+  /* ---- FOCUS AREAS / PROGRAMME PILLARS ---- */
   .focus {
     padding: 8rem 5rem;
     max-width: 1300px;
@@ -543,6 +520,26 @@
     color: var(--mid);
     font-weight: 300;
     transition: color 0.3s;
+    margin-bottom: 1.2rem;
+  }
+  .focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .focus-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(11,123,110,0.2);
+    color: var(--teal);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .focus-card:hover .focus-tag {
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
   }
 
   /* ---- WHO WE SERVE ---- */
@@ -597,6 +594,72 @@
     font-weight: 500;
     color: rgba(255,255,255,0.9);
     line-height: 1.5;
+  }
+
+  /* ---- WHAT MAKES US DIFFERENT ---- */
+  .difference {
+    background: rgba(11,123,110,0.04);
+    border-top: 1px solid rgba(11,123,110,0.12);
+    border-bottom: 1px solid rgba(11,123,110,0.12);
+    padding: 8rem 5rem;
+  }
+  .difference-inner { max-width: 1300px; margin: 0 auto; }
+  .difference-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .difference-list {
+    list-style: none;
+  }
+  .difference-list li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(11,123,110,0.1);
+    align-items: start;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .difference-list li:last-child { border-bottom: none; }
+  .diff-arrow {
+    color: var(--teal);
+    font-weight: 700;
+    margin-top: 0.1rem;
+  }
+  .difference-highlight {
+    background: var(--teal-deep);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .difference-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--pride-1), var(--pride-2), var(--pride-3), var(--pride-4), var(--pride-5));
+  }
+  .difference-highlight blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.5rem;
+  }
+  .difference-highlight cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    font-style: normal;
   }
 
   /* ---- YELP FEATURE ---- */
@@ -683,95 +746,6 @@
     font-weight: 700;
     flex-shrink: 0;
     margin-top: 0.05rem;
-  }
-
-  /* ---- CONTACT ---- */
-  .contact {
-    background: var(--ink);
-    padding: 8rem 5rem 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-inner { max-width: 1300px; margin: 0 auto; }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 6rem;
-    margin-bottom: 6rem;
-  }
-  .contact-left .section-title { color: #fff; }
-  .contact-left .about-label { color: var(--orange); }
-  .contact-tagline {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    line-height: 1.75;
-    margin-top: 1rem;
-    max-width: 460px;
-  }
-  .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
-  .contact-item {
-    display: flex; align-items: flex-start; gap: 1rem;
-  }
-  .contact-item-icon {
-    width: 36px; height: 36px;
-    border-radius: 2px;
-    background: rgba(11,123,110,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-  .contact-item-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.2rem;
-  }
-  .contact-item-value {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.85);
-  }
-  .contact-right {
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .partner-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 3rem;
-    position: relative;
-  }
-  .partner-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--orange), var(--gold));
-  }
-  .partner-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-  .partner-box p {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 2rem;
-  }
-  .partner-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.4rem 0.8rem;
-    border: 1px solid rgba(11,123,110,0.4);
-    color: var(--teal-light);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 1px;
   }
 
   /* ---- OPPORTUNITIES ---- */
@@ -953,6 +927,112 @@
     text-transform: uppercase;
   }
 
+  /* ---- CONTACT ---- */
+  .contact {
+    background: var(--ink);
+    padding: 8rem 5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-inner { max-width: 1300px; margin: 0 auto; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    margin-bottom: 6rem;
+  }
+  .contact-left .section-title { color: #fff; }
+  .contact-left .about-label { color: var(--orange); }
+  .contact-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-top: 1rem;
+    max-width: 460px;
+  }
+  .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .contact-item-icon {
+    width: 36px; height: 36px;
+    border-radius: 2px;
+    background: rgba(11,123,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.2rem;
+  }
+  .contact-item-value {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .contact-right {
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .partner-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 3rem;
+    position: relative;
+  }
+  .partner-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--orange), var(--gold));
+  }
+  .partner-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .partner-box p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .partner-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(11,123,110,0.4);
+    color: var(--teal-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  /* ---- CONTACT FORM ---- */
+  .cf-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    border-radius: 2px;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .cf-input:focus { border-color: var(--teal-light); }
+  .cf-input::placeholder { color: rgba(255,255,255,0.3); }
+  textarea.cf-input { height: 110px; resize: none; }
+
   /* ---- FOOTER ---- */
   .footer {
     background: var(--ink);
@@ -983,23 +1063,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-
-  /* ---- CONTACT FORM ---- */
-  .cf-input {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 0.75rem 1rem;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    border-radius: 2px;
-    width: 100%;
-    transition: border-color 0.2s;
-  }
-  .cf-input:focus { border-color: var(--teal-light); }
-  .cf-input::placeholder { color: rgba(255,255,255,0.3); }
-  textarea.cf-input { height: 110px; resize: none; }
 
   /* ---- ANIMATIONS ---- */
   @keyframes fadeUp {
@@ -1042,6 +1105,8 @@
     .focus { padding: 5rem 2rem; }
     .serve { padding: 5rem 2rem; }
     .serve-grid { grid-template-columns: 1fr 1fr; }
+    .difference { padding: 5rem 2rem; }
+    .difference-body { grid-template-columns: 1fr; gap: 3rem; }
     .yelp { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .contact { padding: 5rem 2rem 3rem; }
@@ -1063,23 +1128,18 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <!-- NAV LOGO: compact node mark + wordmark -->
     <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" height="38" width="auto">
-      <!-- connection lines -->
       <line x1="18" y1="20" x2="32" y2="12" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
       <line x1="18" y1="20" x2="32" y2="28" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
       <line x1="32" y1="12" x2="44" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
       <line x1="32" y1="28" x2="44" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
       <line x1="44" y1="20" x2="54" y2="20" stroke="#C0A88A" stroke-width="1" opacity="0.5"/>
-      <!-- hub node -->
       <circle cx="18" cy="20" r="7" fill="#D95F2B"/>
       <circle cx="18" cy="20" r="2.5" fill="#fff" opacity="0.3"/>
-      <!-- secondary nodes -->
       <circle cx="32" cy="12" r="4" fill="#F5C842"/>
       <circle cx="32" cy="28" r="3.5" fill="#2EC4B6"/>
       <circle cx="44" cy="20" r="3" fill="#2EC4B6"/>
       <circle cx="54" cy="20" r="2" fill="#9B5DE5"/>
-      <!-- wordmark -->
       <text x="64" y="26" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="17" letter-spacing="-0.5">
         <tspan fill="#D95F2B">T</tspan><tspan fill="#065a52">ukonnect</tspan>
       </text>
@@ -1098,11 +1158,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-
-    <!-- HERO LOGO LOCKUP -->
     <div class="hero-logo-lockup">
       <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
-        <!-- connection lines -->
         <line x1="28" y1="45" x2="48" y2="28" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
         <line x1="28" y1="45" x2="48" y2="62" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
         <line x1="28" y1="45" x2="42" y2="74" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
@@ -1112,10 +1169,8 @@
         <line x1="42" y1="74" x2="68" y2="72" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
         <line x1="68" y1="38" x2="82" y2="45" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
         <line x1="68" y1="52" x2="82" y2="45" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-        <!-- hub node -->
         <circle cx="28" cy="45" r="13" fill="#D95F2B"/>
         <circle cx="28" cy="45" r="5" fill="#fff" opacity="0.2"/>
-        <!-- secondary nodes -->
         <circle cx="48" cy="28" r="7" fill="#F5C842"/>
         <circle cx="48" cy="62" r="6" fill="#2EC4B6"/>
         <circle cx="42" cy="74" r="4.5" fill="#9B5DE5"/>
@@ -1123,18 +1178,14 @@
         <circle cx="68" cy="52" r="4" fill="#F5C842"/>
         <circle cx="68" cy="72" r="3.5" fill="#D95F2B"/>
         <circle cx="82" cy="45" r="3" fill="#9B5DE5"/>
-        <!-- wordmark -->
         <text x="100" y="52" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="32" letter-spacing="-1">
           <tspan fill="#D95F2B">T</tspan><tspan fill="#2EC4B6">ukonnect</tspan>
         </text>
-        <!-- divider -->
         <rect x="100" y="60" width="172" height="1.5" fill="#D95F2B" rx="1" opacity="0.6"/>
-        <!-- sub label -->
         <text x="102" y="76" font-family="Arial, sans-serif" font-size="9" letter-spacing="3.5" fill="rgba(255,255,255,0.55)">DIGITAL HUB</text>
       </svg>
     </div>
-
-    <div class="hero-eyebrow">Kenya & East Africa · Est. 2025</div>
+    <div class="hero-eyebrow">Kenya · Est. 2025 · LGBTQI+ &amp; Gender-Diverse Communities</div>
     <h1 class="hero-title">
       People.<br>
       Connection.<br>
@@ -1157,7 +1208,7 @@
         <div class="ring ring-3"></div>
         <div class="hero-orb">
           <div class="hero-orb-text">
-            AI Literacy<br>Digital Rights<br>Community Power
+            AI Literacy<br>Digital Safety<br>Community Power
           </div>
         </div>
       </div>
@@ -1167,7 +1218,7 @@
       <span></span><span></span><span></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
-    <div class="hero-est">EST · 2025 · EAST AFRICA</div>
+    <div class="hero-est">EST · 2025 · KENYA</div>
     <div class="pride-stripe"></div>
   </div>
 </section>
@@ -1176,59 +1227,60 @@
 <div class="tagline-band">
   <div class="tagline-scroll">
     <span>AI Literacy</span><span class="accent">·</span>
-    <span>Digital Rights</span><span class="accent">·</span>
-    <span>Community Advocacy</span><span class="accent">·</span>
-    <span>Data Storytelling</span><span class="accent">·</span>
+    <span>Digital Safety</span><span class="accent">·</span>
     <span>LGBTQI+ Inclusion</span><span class="accent">·</span>
-    <span>Kenya & East Africa</span><span class="accent">·</span>
-    <span>Policy Engagement</span><span class="accent">·</span>
-    <span>Women in Tech</span><span class="accent">·</span>
+    <span>Advocacy &amp; Policy</span><span class="accent">·</span>
+    <span>Gender-Diverse Communities</span><span class="accent">·</span>
+    <span>Kenya-wide</span><span class="accent">·</span>
+    <span>Mentorship &amp; Community</span><span class="accent">·</span>
+    <span>Digital Rights</span><span class="accent">·</span>
     <span>AI Literacy</span><span class="accent">·</span>
-    <span>Digital Rights</span><span class="accent">·</span>
-    <span>Community Advocacy</span><span class="accent">·</span>
-    <span>Data Storytelling</span><span class="accent">·</span>
+    <span>Digital Safety</span><span class="accent">·</span>
     <span>LGBTQI+ Inclusion</span><span class="accent">·</span>
-    <span>Kenya & East Africa</span><span class="accent">·</span>
-    <span>Policy Engagement</span><span class="accent">·</span>
-    <span>Women in Tech</span><span class="accent">·</span>
+    <span>Advocacy &amp; Policy</span><span class="accent">·</span>
+    <span>Gender-Diverse Communities</span><span class="accent">·</span>
+    <span>Kenya-wide</span><span class="accent">·</span>
+    <span>Mentorship &amp; Community</span><span class="accent">·</span>
+    <span>Digital Rights</span><span class="accent">·</span>
   </div>
 </div>
 
-<!-- WHO WE ARE -->
+<!-- ABOUT THE NAME -->
 <section class="about" id="about">
   <div class="about-left reveal">
-    <div class="about-label">Who We Are</div>
-    <h2 class="section-title">Building digital power across Africa.</h2>
-    <p class="about-body">Tukonnect Digital Hub is a Kenya-based organisation working at the intersection of technology, inclusion, and community. We launched in 2025 out of a simple observation: digital tools, AI, and the conversations shaping them are largely happening without the people who need them most.</p>
-    <p class="about-body">We exist to change that. We support LGBTQI+ communities, women in tech, and young emerging leaders across Kenya and East Africa to build digital skills, understand their rights in digital spaces, shape AI policy conversations, and step into their power as the next generation of thought leaders.</p>
-    <p class="about-body">We started in Kisumu. We are growing across the region. The work we do here matters everywhere.</p>
+    <div class="about-label">About Us</div>
+    <h2 class="section-title">We exist because the gap is real.</h2>
+    <p class="about-body">Tukonnect Digital Hub was born out of a simple but urgent observation: digital tools, AI systems, and the conversations shaping them are largely happening without the people who need them most. LGBTQI+ and gender-diverse communities across Kenya are not missing from these spaces by accident. They have been left out by design.</p>
+    <p class="about-body">We exist to change that. We are a Kenya-based organisation working at the intersection of AI, digital rights, and community, building the skills, safety, and advocacy power of gender-diverse people so they can participate in, shape, and hold accountable the systems that affect their lives.</p>
+    <p class="about-body">We started in Kisumu. We are growing across Kenya. The name Tukonnect comes from everyday Swahili-English slang for "let's connect." It is the kind of language people actually use, casual and warm, the way a friend reaches across to pull you into something. That informality is deliberate. This is not a gatekept institution. It is an open hand.</p>
   </div>
   <div class="about-right reveal">
-    <div class="about-accent"></div>
-    <div class="about-card">
-      <p>
-        <span class="vision-label">About</span>
-        Tukonnect Digital Hub is a Kenya-based organisation working at the intersection of technology, inclusion, and community. Born in Kisumu. Growing across East Africa.
-      </p>
+    <div class="name-word-stack">
+      <div class="name-word">Skills</div>
+      <div class="name-word">Safety</div>
+      <div class="name-word">Power</div>
+      <div class="name-word">Community</div>
+      <div class="name-word">Policy</div>
+      <div class="name-word">Future</div>
     </div>
   </div>
 </section>
 
 <!-- VISION & MISSION -->
-<section class="vision-mission-section">
+<section class="vision-mission-section" id="vision">
   <div class="vision-mission-inner">
     <div class="vm-block vm-vision reveal">
       <div class="vm-label">Vision</div>
       <div class="vm-icon">🔭</div>
-      <h3 class="vm-title">Where we're going</h3>
-      <p class="vm-text">East Africa where communities most often left out — LGBTQI+ people, women, and young emerging leaders — are not just users of technology, but informed, protected, and powerful participants in shaping it. Where AI and digital systems reflect the dignity of every person, and where no one loses their rights, safety, or voice in a digital world.</p>
+      <h3 class="vm-title">Where we are going</h3>
+      <p class="vm-text">A Kenya where gender-diverse people are not just users of artificial intelligence, but architects of it, shaping technology that reflects their lives, protects their rights, and amplifies their power.</p>
     </div>
     <div class="vm-divider"></div>
     <div class="vm-block vm-mission reveal">
       <div class="vm-label">Mission</div>
       <div class="vm-icon">🎯</div>
-      <h3 class="vm-title">What we're here to do</h3>
-      <p class="vm-text">Tukonnect Digital Hub builds the digital knowledge, safety, and advocacy power of marginalised communities across Kenya and East Africa. We grow AI literacy that goes beyond tools to help people understand how these systems can protect or endanger them. We build data skills that help communities tell their own stories and hold power to account. And we bring community voices into the national and regional policy conversations shaping Africa's digital future, starting with AI governance.</p>
+      <h3 class="vm-title">What we are here to do</h3>
+      <p class="vm-text">Tukonnect Digital Hub equips gender-diverse people across Kenya with AI skills, digital safety knowledge, and advocacy tools, building a generation of tech-literate community leaders who can hold systems accountable and drive change from the inside.</p>
     </div>
   </div>
 </section>
@@ -1238,7 +1290,7 @@
   <div class="values-inner">
     <div class="values-header reveal">
       <h2 class="values-title">What We Stand For</h2>
-      <p class="values-sub">Five principles that guide everything we do across Kenya and East Africa.</p>
+      <p class="values-sub">Five principles that guide everything we do across Kenya.</p>
     </div>
     <div class="values-grid">
       <div class="value-item reveal">
@@ -1251,7 +1303,7 @@
         <div class="value-num">02</div>
         <div class="value-icon">🌈</div>
         <div class="value-name">Radical Inclusion</div>
-        <p class="value-desc">LGBTQI+ identities, gender, and lived experience are central to our work. Not an afterthought.</p>
+        <p class="value-desc">LGBTQI+ identities and gender-diverse lived experience are central to our work, not an afterthought.</p>
       </div>
       <div class="value-item reveal">
         <div class="value-num">03</div>
@@ -1269,48 +1321,77 @@
         <div class="value-num">05</div>
         <div class="value-icon">🌱</div>
         <div class="value-name">Grounded in Practice</div>
-        <p class="value-desc">Our work is rooted in real experience within the communities we serve. We reflect, adapt, and grow with intention.</p>
+        <p class="value-desc">Rooted in real experience within the communities we serve. We reflect, adapt, and grow with intention.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOCUS AREAS -->
+<!-- PROGRAMME PILLARS -->
 <section class="focus" id="focus">
   <div class="focus-header">
     <div class="reveal">
-      <div class="about-label">Focus Areas</div>
-      <h2 class="section-title">Four areas. One community.</h2>
+      <div class="about-label">Programme Pillars</div>
+      <h2 class="section-title">Four pillars.<br>One community.</h2>
     </div>
     <p class="focus-intro reveal">
-      Our programmes are designed with and for the communities we serve. Building digital knowledge, safety, and advocacy power across Kenya and East Africa.
+      Our programmes are designed with and for gender-diverse communities across Kenya, building AI knowledge, digital safety, advocacy power, and a peer network that lasts.
     </p>
   </div>
   <div class="focus-grid">
+
     <div class="focus-card reveal">
       <div class="focus-num">01</div>
       <div class="focus-icon-bg">💻</div>
-      <div class="focus-name">AI Literacy & Digital Skills</div>
-      <p class="focus-desc">We run accessible, community-centred training on digital tools and artificial intelligence. We go beyond how to use AI to help people understand how these systems can protect or endanger them. Our sessions are designed for those who have been told tech is not for them: women, LGBTQI+ individuals, and young people across Kenya and East Africa.</p>
+      <div class="focus-name">AI Literacy &amp; Economic Power</div>
+      <p class="focus-desc">Hands-on, beginner-friendly training in AI and digital tools, designed for people with no prior tech background. Participants learn to use, question, and build with AI in ways relevant to their lives and livelihoods, with pathways into tech careers and freelancing. We go beyond how to use AI to help people understand how these systems can protect or endanger them.</p>
+      <div class="focus-tags">
+        <span class="focus-tag">AI/ML Basics</span>
+        <span class="focus-tag">Kaggle</span>
+        <span class="focus-tag">Zindi</span>
+        <span class="focus-tag">Project-Based</span>
+      </div>
     </div>
+
     <div class="focus-card reveal">
       <div class="focus-num">02</div>
-      <div class="focus-icon-bg">📊</div>
-      <div class="focus-name">Data Literacy & Community Storytelling</div>
-      <p class="focus-desc">Communities across Kenya are increasingly subjects of data collection, yet rarely understand how their data is used or how to use data themselves. We build the skills for communities to collect, read, and use data for their own advocacy, storytelling, and accountability work.</p>
+      <div class="focus-icon-bg">🛡️</div>
+      <div class="focus-name">Digital Safety &amp; Protection</div>
+      <p class="focus-desc">A core curriculum on how AI-enabled surveillance, data harvesting, and algorithmic bias disproportionately harm LGBTQI+ and gender-diverse communities in Kenya. Participants leave with practical skills including secure communications, data privacy, and threat modelling, along with a critical understanding of the technology being used against them.</p>
+      <div class="focus-tags">
+        <span class="focus-tag">Surveillance</span>
+        <span class="focus-tag">Data Privacy</span>
+        <span class="focus-tag">Threat Modelling</span>
+        <span class="focus-tag">Digital Rights</span>
+      </div>
     </div>
+
     <div class="focus-card reveal">
       <div class="focus-num">03</div>
       <div class="focus-icon-bg">🏛️</div>
-      <div class="focus-name">AI Policy & Digital Rights Advocacy</div>
-      <p class="focus-desc">Kenya and East Africa's AI governance landscape is being shaped right now, and community voices are largely absent from those conversations. We engage with AI policy, platform accountability, and digital rights from a human rights perspective, and we help our communities participate meaningfully in the national and regional processes that will affect their lives.</p>
+      <div class="focus-name">Advocacy, Governance &amp; Policy</div>
+      <p class="focus-desc">Training community members to engage with AI policy processes, document rights violations using digital tools, and participate in governance spaces, from national consultations to regional forums. Kenya's AI regulatory landscape is being shaped right now, and community voices must be in those rooms. We help put them there.</p>
+      <div class="focus-tags">
+        <span class="focus-tag">AI Policy</span>
+        <span class="focus-tag">SOGIESC Rights</span>
+        <span class="focus-tag">Documentation</span>
+        <span class="focus-tag">Governance</span>
+      </div>
     </div>
+
     <div class="focus-card reveal">
       <div class="focus-num">04</div>
       <div class="focus-icon-bg">🌱</div>
-      <div class="focus-name">Fellowships & Leadership Development</div>
-      <p class="focus-desc">Through YELP (the Young and Emerging Leaders Project) we invest in the next generation of informed, values-driven leaders across East Africa. Fellows receive skills, mentorship, and a platform to drive change in their own communities over a six-month programme.</p>
+      <div class="focus-name">Mentorship &amp; Community of Practice</div>
+      <p class="focus-desc">A structured mentorship programme pairing participants with mentors from tech, civil society, and governance. Cohort-based learning creates peer accountability, and alumni become mentors in subsequent cycles, building a self-sustaining network over time. The community does not end when the programme does.</p>
+      <div class="focus-tags">
+        <span class="focus-tag">Mentorship</span>
+        <span class="focus-tag">Cohorts</span>
+        <span class="focus-tag">Alumni Network</span>
+        <span class="focus-tag">Peer Learning</span>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -1319,20 +1400,20 @@
   <div class="serve-inner">
     <div class="serve-header reveal">
       <div class="about-label">Who We Serve</div>
-      <h2 class="section-title" style="color:#fff;">Work designed with and for community.</h2>
+      <h2 class="section-title">Work designed with and for community.</h2>
     </div>
     <div class="serve-grid">
       <div class="serve-card reveal">
-        <div class="serve-icon">🏳️🌈</div>
-        <div class="serve-name">LGBTQI+ individuals and community-based organisations across Kenya and East Africa</div>
+        <div class="serve-icon">🏳️‍🌈</div>
+        <div class="serve-name">LGBTQI+ individuals and gender-diverse people across Kenya</div>
       </div>
       <div class="serve-card reveal">
         <div class="serve-icon">🌟</div>
         <div class="serve-name">Young people (18–35) building careers in digital, tech, and advocacy</div>
       </div>
       <div class="serve-card reveal">
-        <div class="serve-icon">👩💻</div>
-        <div class="serve-name">Women entering or navigating technology and digital spaces</div>
+        <div class="serve-icon">👩‍💻</div>
+        <div class="serve-name">Women and gender-diverse people entering or navigating technology spaces</div>
       </div>
       <div class="serve-card reveal">
         <div class="serve-icon">🤝</div>
@@ -1341,6 +1422,42 @@
       <div class="serve-card reveal">
         <div class="serve-icon">🗣️</div>
         <div class="serve-name">Community members who want to participate in AI and digital policy conversations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES US DIFFERENT -->
+<section class="difference">
+  <div class="difference-inner">
+    <div class="reveal">
+      <div class="about-label">What Makes This Different</div>
+      <h2 class="section-title">Not a general programme.<br>A specific one.</h2>
+    </div>
+    <div class="difference-body">
+      <ul class="difference-list reveal">
+        <li>
+          <span class="diff-arrow">→</span>
+          <span>Most AI inclusion programmes focus on gender broadly. Tukonnect centres the specific, compounded barriers that gender-diverse people face, in accessing technology, in being safe online, and in being seen in policy spaces.</span>
+        </li>
+        <li>
+          <span class="diff-arrow">→</span>
+          <span>Digital safety and AI surveillance are core curriculum, not an add-on. Understanding how technology can be weaponised against you is inseparable from learning how to use it.</span>
+        </li>
+        <li>
+          <span class="diff-arrow">→</span>
+          <span>The integration of SOGIESC rights with digital rights is not supplementary. It is the foundation everything else is built on.</span>
+        </li>
+        <li>
+          <span class="diff-arrow">→</span>
+          <span>Rooted in Kisumu, operating Kenya-wide. We are not importing a model from elsewhere. We are building one that knows this ground.</span>
+        </li>
+      </ul>
+      <div class="difference-highlight reveal">
+        <blockquote>
+          "In spaces where gender-diverse people have historically been excluded, made to feel like outsiders, or spoken at rather than with. Tukonnect signals something different. This is not a gatekept institution. It is an open hand."
+        </blockquote>
+        <cite>Tukonnect Digital Hub · Kisumu, Kenya</cite>
       </div>
     </div>
   </div>
@@ -1364,8 +1481,8 @@
           <div class="yelp-stat-label">Month Programme</div>
         </div>
         <div class="yelp-stat">
-          <div class="yelp-stat-num">E.A.</div>
-          <div class="yelp-stat-label">East Africa Focus</div>
+          <div class="yelp-stat-num">KE</div>
+          <div class="yelp-stat-label">Kenya Focus</div>
         </div>
         <div class="yelp-stat">
           <div class="yelp-stat-num">2025</div>
@@ -1377,13 +1494,13 @@
   </div>
   <div class="yelp-content reveal">
     <div class="about-label">Leadership Development</div>
-    <h2 class="section-title">Investing in East Africa's next generation of informed leaders.</h2>
+    <h2 class="section-title">Investing in Kenya's next generation of informed, values-driven leaders.</h2>
     <ul class="yelp-bullets">
-      <li>Hands-on digital and AI skills training tailored to emerging leaders</li>
-      <li>Mentorship from experienced practitioners across tech and advocacy</li>
+      <li>Hands-on AI and digital skills training tailored for emerging leaders from gender-diverse communities</li>
+      <li>Mentorship from experienced practitioners across tech, advocacy, and governance</li>
       <li>A platform and community to drive real change in your own context</li>
       <li>Six months of structured, community-centred growth</li>
-      <li>An East African thought leadership network that lasts beyond the programme</li>
+      <li>A peer network built around shared values that lasts beyond the programme</li>
     </ul>
   </div>
 </section>
@@ -1394,28 +1511,28 @@
     <div class="opp-header reveal">
       <div class="about-label">Opportunities</div>
       <h2 class="section-title">Open calls for you.</h2>
-      <p>Fellowships, trainings, and open calls from Tukonnect and across our network in Kenya and East Africa. We share what we know about.</p>
+      <p>Fellowships, trainings, and open calls from Tukonnect and across our network in Kenya. We share what we know about.</p>
     </div>
     <div class="opp-grid">
       <div class="opp-card type-fellowship reveal">
         <div class="opp-type">Fellowship</div>
         <div class="opp-title">YELP: Young and Emerging Leaders Project</div>
-        <p class="opp-desc">Our flagship six-month programme for young leaders in East Africa. Applications open in 2025. Skills, mentorship, and a community that stays with you.</p>
+        <p class="opp-desc">Our flagship six-month programme for young leaders in Kenya. Applications open in 2025. Skills, mentorship, and a community that stays with you.</p>
         <div class="opp-meta">
-          <span class="opp-tag">East Africa</span>
+          <span class="opp-tag">Kenya</span>
           <span class="opp-tag">6 Months</span>
-          <span class="opp-tag">Ages 18-35</span>
+          <span class="opp-tag">Ages 18–35</span>
         </div>
         <a href="#contact" class="opp-link">Register interest →</a>
       </div>
       <div class="opp-card type-training reveal">
         <div class="opp-type">Training</div>
-        <div class="opp-title">AI Literacy for Community Organisations</div>
-        <p class="opp-desc">A short workshop series helping civil society organisations understand AI tools and the risks they carry for the communities they serve.</p>
+        <div class="opp-title">AI Literacy for Gender-Diverse Communities</div>
+        <p class="opp-desc">A short workshop series helping LGBTQI+ and gender-diverse people understand AI tools, digital safety, and the risks these systems carry for communities like theirs.</p>
         <div class="opp-meta">
           <span class="opp-tag">Kisumu</span>
           <span class="opp-tag">Free</span>
-          <span class="opp-tag">CSOs</span>
+          <span class="opp-tag">Open to All</span>
         </div>
         <a href="#contact" class="opp-link">Express interest →</a>
       </div>
@@ -1457,38 +1574,9 @@
         <div class="about-label">Get In Touch</div>
         <h2 class="section-title">Let's build something together.</h2>
         <p class="contact-tagline">
-          We are open to partnerships with funders, civil society organisations, and digital rights advocates who share our commitment to inclusion and community-led change across Kenya and East Africa.
+          We are open to partnerships with funders, civil society organisations, and digital rights advocates who share our commitment to gender-diverse inclusion and community-led change across Kenya.
         </p>
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <div class="contact-item-label">Location</div>
-              <div class="contact-item-value">Kisumu, Kenya</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">🌍</div>
-            <div>
-              <div class="contact-item-label">Serving</div>
-              <div class="contact-item-value">Kenya & East Africa, globally remote</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">⏱️</div>
-            <div>
-              <div class="contact-item-label">Response Time</div>
-              <div class="contact-item-value">Within 2 business days</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">💬</div>
-            <div>
-              <div class="contact-item-label">We work with</div>
-              <div class="contact-item-value">NGOs, CSOs, social enterprises & funders</div>
-            </div>
-          </div>
-        </div>
+
       </div>
       <div class="contact-right reveal">
         <div class="partner-box" style="display:flex;flex-direction:column;gap:1rem;">
@@ -1499,7 +1587,7 @@
           <input type="text" id="cf-org" class="cf-input" placeholder="Organisation / Project" />
           <textarea id="cf-message" class="cf-input" placeholder="Tell us about your project or inquiry…"></textarea>
           <button onclick="submitForm()" style="background:var(--orange);color:#fff;border:none;padding:0.85rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.05em;cursor:pointer;border-radius:2px;transition:background 0.2s;width:100%;">Send Message →</button>
-          <p id="cf-status" style="font-size:0.82rem;color:var(--teal-light);display:none;">✓ Message sent! We'll be in touch soon.</p>
+          <p id="cf-status" style="font-size:0.82rem;color:var(--teal-light);display:none;">Message sent! We will be in touch soon.</p>
         </div>
       </div>
     </div>
@@ -1511,8 +1599,8 @@
         <span class="tag">AI Governance</span>
         <span class="tag">SRHR</span>
         <span class="tag">LGBTQI+ Orgs</span>
-        <span class="tag">Women in Tech</span>
-        <span class="tag">East Africa</span>
+        <span class="tag">Gender-Diverse Communities</span>
+        <span class="tag">Kenya</span>
       </div>
     </div>
   </div>
@@ -1520,7 +1608,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">Tukonnect Digital Hub · Kenya & East Africa</div>
+  <div class="footer-logo">Tukonnect Digital Hub · Kisumu, Kenya</div>
   <div class="footer-center">
     <span style="background:var(--pride-1)"></span>
     <span style="background:var(--pride-2)"></span>
@@ -1623,7 +1711,7 @@
       if (r.ok) {
         document.getElementById('cf-status').style.display = 'block';
         ['cf-name','cf-email','cf-org','cf-message'].forEach(id => document.getElementById(id).value = '');
-        btn.textContent = 'Sent ✓';
+        btn.textContent = 'Sent';
       } else {
         btn.textContent = 'Send Message →';
         btn.disabled = false;
